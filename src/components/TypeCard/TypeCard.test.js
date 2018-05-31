@@ -32,15 +32,68 @@ describe('TypeCard', () => {
         json: () => Promise.resolve({
           name: 'onyx',
           weight: '75',
-          spites: {
+          sprites: {
             front_default: 'hello.jpg'
           }
         })
       }))
 
-      wrapper.simulate('click')
+      Promise.resolve(wrapper.simulate('click'))
+        .then(() => {
+          wrapper.update()
+        })
+        .then(() => {
+          expect(window.fetch).toHaveBeenCalled()
+        })
+    })
 
-      expect(window.fetch).toHaveBeenCalled()
+    it('should update card state with new pokemon', () => {
+
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        json: () => Promise.resolve({
+          name: 'onyx',
+          weight: '75',
+          sprites: {
+            front_default: 'hello.jpg'
+          }
+        })
+      }))
+
+      Promise.resolve(wrapper.simulate('click'))
+        .then(() => {
+          wrapper.update()
+        })
+        .then(() => {
+          expect(wrapper.state().pokemon).toEqual([{
+            name: 'onyx',
+            weight: '75',
+            sprites: {
+              front_default: 'hello.jpg'
+            }
+          }])
+        })
+    })
+
+    it('should render a pokemon inside the card after call is made', () => {
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        json: () => Promise.resolve({
+          name: 'onyx',
+          weight: '75',
+          sprites: {
+            front_default: 'hello.jpg'
+          }
+        })
+      }))
+
+      Promise.resolve(wrapper.simulate('click'))
+        .then(() => {
+          wrapper.update()
+        })
+        .then(() => {
+          const info = wrapper.find('div')
+
+          expect(info.length).toEqual(1)
+        })
     })
   })
 })
