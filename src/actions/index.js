@@ -18,5 +18,16 @@ export const hasErrored = boolean => ({
 export const fetchPokemonTypes = url => {
   return dispatch => {
     dispatch(isLoading(true))
+    fetch(url)
+      .then(response => {
+        if (!response.ok) {
+          dispatch(hasErrored(true))
+          throw Error('Oh dang')
+        }
+        dispatch(isLoading(false))
+        return response
+      })
+      .then(response => response.json())
+      .then(pokeData => dispatch(getPokeTypes(pokeData)))
   }
 }
