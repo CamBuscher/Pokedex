@@ -15,8 +15,8 @@ export const hasErrored = boolean => ({
   hasErrored: boolean
 })
 
-// export const fetchPokemonTypes = url => {
-//   return dispatch => {
-//     dispatch(isLoading(true))
-//   }
-// }
+export const fetchPokemonTypes = url => {
+  return dispatch => {
+    dispatch(isLoading(true))
+  }
+}
