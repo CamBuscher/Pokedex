@@ -1,4 +1,4 @@
-export const fakeAction = () => ({ type: 'FAKE'})
+// export const fakeAction = () => ({ type: 'FAKE'})
 
 export const getPokeTypes = pokemonInfo => ({
   type: 'GET_POKE_TYPES',
@@ -15,11 +15,11 @@ export const hasErrored = boolean => ({
   hasErrored: boolean
 })
 
-export const fetchPokemonTypes = url => {
-  return dispatch => {
-    dispatch(isLoading(true))
+export const fetchPokemonTypes = (url) => {
+  return (dispatch) => {
     fetch(url)
       .then(response => {
+        console.log(response)
         if (!response.ok) {
           dispatch(hasErrored(true))
           throw Error('Oh dang')

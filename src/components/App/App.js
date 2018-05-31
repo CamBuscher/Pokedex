@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import FakeContainer from '../../containers/FakeContainer/'
+import PokeTypesContainer from '../../containers/PokeTypesContainer/'
 
 class App extends Component {
 
@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div className='App'>
         <h1 className='header'> POKéDEX </h1>
-        <FakeContainer />
+        <PokeTypesContainer />
       </div>
     );
   }
