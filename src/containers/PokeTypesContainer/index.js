@@ -3,6 +3,7 @@ import PropTypes, { shape, func, string } from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchPokemonTypes } from '../../actions';
 import { TypeCard } from '../../components/TypeCard'
+import './PokeTypesContainer.css'
 
 class PokeTypesContainer extends Component {
 
@@ -22,7 +23,7 @@ class PokeTypesContainer extends Component {
 
   render() {
     return (
-      <div>
+      <div className='pokeTypesContainer'>
         {this.determineRender()}
       </div>
     );

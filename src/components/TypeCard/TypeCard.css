@@ -1,0 +1,6 @@
+.typeCard {
+  border: 1px solid black;
+  width: 30%;
+  box-shadow: 3px 3px 6px;
+  margin: 10px;
+}
