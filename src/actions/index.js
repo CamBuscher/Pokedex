@@ -19,7 +19,6 @@ export const fetchPokemonTypes = (url) => {
   return (dispatch) => {
     fetch(url)
       .then(response => {
-        console.log(response)
         if (!response.ok) {
           dispatch(hasErrored(true))
           throw Error('Oh dang')

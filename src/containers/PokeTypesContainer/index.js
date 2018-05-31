@@ -5,6 +5,7 @@ import { fetchPokemonTypes } from '../../actions';
 class PokeTypesContainer extends Component {
 
   componentDidMount() {
+    console.log(this.props)
     this.props.getPokeTypes('http://localhost:3001/types')
   }
 
@@ -21,7 +22,7 @@ PokeTypesContainer.propTypes = {
   getPokeTypes: func.isRequired
 };
 
-const mapStateToProps = ({ isLoading }) => ({ isLoading });
+const mapStateToProps = ({ isLoading, types }) => ({ isLoading, types });
 const mapDispatchToProps = dispatch => ({ getPokeTypes:
   (url) => dispatch(fetchPokemonTypes(url))
 });
