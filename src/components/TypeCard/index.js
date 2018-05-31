@@ -6,14 +6,11 @@ export class TypeCard extends Component {
     super(props)
 
     this.state = {
-      pokemon: [],
-      showPokemon: false
+      pokemon: []
     }
   }
 
   fetchPokemon = () => {
-    this.setState({showPokemon: true})
-
     if (!this.state.pokemon.length) {
       this.props.pokemon.map(pokemONE => {
         return fetch(`http://localhost:3001/pokemon/${pokemONE}`)
@@ -28,15 +25,13 @@ export class TypeCard extends Component {
   }
 
   renderPokemon = () => {
-    if (this.state.showPokemon) {
-      return this.state.pokemon.map(pokemon => (
-        <div>
-          <p>{pokemon.name}</p>
-          <p>{pokemon.weight}</p>
-          <img className='pokeImg' src={pokemon.sprites.front_default} />
-        </div>
-      ))
-    }
+    return this.state.pokemon.map(pokemon => (
+      <div>
+        <p>Name: {pokemon.name}</p>
+        <p>Weight: {pokemon.weight}</p>
+        <img className='pokeImg' src={pokemon.sprites.front_default} />
+      </div>
+    ))
   }
   
   render() {

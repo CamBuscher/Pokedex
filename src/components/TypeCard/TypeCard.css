@@ -3,10 +3,11 @@
   width: 30%;
   box-shadow: 3px 3px 6px;
   margin: 10px;
+  height: fit-content;
   max-height: 300px;
   overflow: scroll;
 }
 
 .pokeImg {
-  width: 50px;
+  width: 75px;
 }
