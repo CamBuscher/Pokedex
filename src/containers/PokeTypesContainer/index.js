@@ -16,7 +16,7 @@ class PokeTypesContainer extends Component {
       return <img src='https://media.giphy.com/media/slVWEctHZKvWU/giphy.gif' />
     } else {
       return (
-        this.props.types.map(type => <TypeCard {...type} />)
+        this.props.types.map(type => <TypeCard {...type} key={type.name}/>)
       )
     }
   }
@@ -31,7 +31,9 @@ class PokeTypesContainer extends Component {
 }
 
 PokeTypesContainer.propTypes = {
-  getPokeTypes: func.isRequired
+  getPokeTypes: func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  types: PropTypes.array.isRequired
 };
 
 const mapStateToProps = ({ isLoading, types }) => ({ isLoading, types });

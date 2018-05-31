@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes, { shape, func, string } from 'prop-types';
 import './TypeCard.css';
 
 export class TypeCard extends Component {
@@ -26,7 +27,7 @@ export class TypeCard extends Component {
 
   renderPokemon = () => {
     return this.state.pokemon.map(pokemon => (
-      <div>
+      <div key={pokemon.id}>
         <p>Name: {pokemon.name}</p>
         <p>Weight: {pokemon.weight}</p>
         <img className='pokeImg' src={pokemon.sprites.front_default} />
@@ -43,3 +44,9 @@ export class TypeCard extends Component {
     )
   }
 }
+
+TypeCard.propTypes = {
+  pokemon: PropTypes.array.isRequired,
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired
+};
