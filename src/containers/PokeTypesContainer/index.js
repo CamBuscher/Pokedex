@@ -14,6 +14,8 @@ export class PokeTypesContainer extends Component {
   determineRender = () => {
     if (this.props.isLoading) {
       return <img src='https://media.giphy.com/media/slVWEctHZKvWU/giphy.gif' />
+    } else if (this.props.hasErrored) {
+      return <h2> Oh no, something broke! </h2>
     } else {
       return (
         this.props.types.map(type => <TypeCard {...type} key={type.name}/>)
@@ -22,6 +24,7 @@ export class PokeTypesContainer extends Component {
   }
 
   render() {
+    console.log(this.props)
     return (
       <div className='pokeTypesContainer'>
         {this.determineRender()}
@@ -33,10 +36,11 @@ export class PokeTypesContainer extends Component {
 PokeTypesContainer.propTypes = {
   getPokeTypes: func.isRequired,
   isLoading: PropTypes.bool.isRequired,
-  types: PropTypes.array.isRequired
+  types: PropTypes.array.isRequired,
+  hasErrored: PropTypes.bool.isRequired
 };
 
-export const mapStateToProps = ({ isLoading, types }) => ({ isLoading, types });
+export const mapStateToProps = ({ isLoading, types, hasErrored }) => ({ isLoading, types, hasErrored });
 export const mapDispatchToProps = dispatch => ({ getPokeTypes:
   (url) => dispatch(fetchPokemonTypes(url))
 });
