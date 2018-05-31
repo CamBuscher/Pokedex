@@ -15,4 +15,8 @@ export const hasErrored = boolean => ({
   hasErrored: boolean
 })
 
-ex
+// export const fetchPokemonTypes = url => {
+//   return dispatch => {
+//     dispatch(isLoading(true))
+//   }
+// }
