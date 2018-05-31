@@ -24,7 +24,6 @@ export class PokeTypesContainer extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <div className='pokeTypesContainer'>
         {this.determineRender()}

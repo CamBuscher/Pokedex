@@ -12,6 +12,7 @@ describe('PokeTypesContainer', () => {
     mockProps = {
       getPokeTypes: jest.fn(),
       isLoading: false,
+      hasErrored: false,
       types: []
     } 
 
@@ -26,6 +27,7 @@ describe('PokeTypesContainer', () => {
     mockProps = {
       getPokeTypes: jest.fn(),
       isLoading: true,
+      hasErrored: false,
       types: []
     }
 
