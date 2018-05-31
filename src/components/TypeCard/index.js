@@ -47,6 +47,6 @@ export class TypeCard extends Component {
 
 TypeCard.propTypes = {
   pokemon: PropTypes.array.isRequired,
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired
 };
