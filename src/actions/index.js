@@ -13,6 +13,11 @@ export const hasErrored = boolean => ({
   hasErrored: boolean
 })
 
+export const addPokemon = pokemon => ({
+  type: 'ADD_POKEMON',
+  pokemon
+})
+
 export const fetchPokemonTypes = (url) => {
   return (dispatch) => {
     fetch(url)
@@ -26,5 +31,18 @@ export const fetchPokemonTypes = (url) => {
       })
       .then(response => response.json())
       .then(pokeData => dispatch(getPokeTypes(pokeData)))
+  }
+}
+
+export const fetchSpecificPokemon = (pokemon, type) => {
+  return dispatch => {
+    pokemon.map(pokemONE => {
+      return fetch(`http://localhost:3001/pokemon/${pokemONE}`)
+        .then(response => response.json())
+        .then(data => {
+          console.log({...data, type})
+          dispatch(addPokemon({...data, type}))
+        })
+    })
   }
 }

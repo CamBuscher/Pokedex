@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes, { shape, func, string } from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchPokemonTypes } from '../../actions';
-import { TypeCard } from '../../components/TypeCard'
+import TypeCard from '../TypeCard'
 import './PokeTypesContainer.css'
 
 export class PokeTypesContainer extends Component {

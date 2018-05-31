@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes, { shape, func, string } from 'prop-types';
+import { connect } from 'react-redux';
+import { fetchSpecificPokemon } from '../../actions';
 import './TypeCard.css';
 
-export class TypeCard extends Component {
+class TypeCard extends Component {
   constructor(props) {
     super(props)
 
@@ -12,6 +14,7 @@ export class TypeCard extends Component {
   }
 
   fetchPokemon = () => {
+    this.props.fetchSpecificPokemon(this.props.pokemon, this.props.name)
     if (!this.state.pokemon.length) {
       this.props.pokemon.map(pokemONE => {
         return fetch(`http://localhost:3001/pokemon/${pokemONE}`)
@@ -26,7 +29,9 @@ export class TypeCard extends Component {
   }
 
   renderPokemon = () => {
-    return this.state.pokemon.map(pokemon => (
+    const pokemonToRender = this.props.allPokemon.filter(pokemon => pokemon.type === this.props.name)
+    
+    return pokemonToRender.map(pokemon => (
       <div key={pokemon.id}>
         <p>Name: {pokemon.name}</p>
         <p>Weight: {pokemon.weight}</p>
@@ -50,3 +55,10 @@ TypeCard.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired
 };
+
+export const mapStateToProps = ({ allPokemon }) => ({ allPokemon });
+export const mapDispatchToProps = dispatch => ({
+  fetchSpecificPokemon:
+    (pokemon, type) => dispatch(fetchSpecificPokemon(pokemon, type))
+});
+export default connect(mapStateToProps, mapDispatchToProps)(TypeCard);
