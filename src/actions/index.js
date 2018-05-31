@@ -1,5 +1,3 @@
-// export const fakeAction = () => ({ type: 'FAKE'})
-
 export const getPokeTypes = pokemonInfo => ({
   type: 'GET_POKE_TYPES',
   types: pokemonInfo
